@@ -2,34 +2,18 @@
 
 //var_dump(__DIR__ . '/helpers/functions.php');
 
-require_once __DIR__ . '/helpers/functions.php';
-//var_dump($_GET);
-//var_dump(isset($_GET['email']));
-
-
-$email = $_GET['email'];
-
-if (isset($email)) {
-    //var_dump($email);
-
-    // if (str_contains($email, '@' ) && str_contains($email, '.')) {
-    //    echo $message= 'OK';
-    // }else{
-    //    echo $message='Fail';
-    // }
-
-    $response = checkMail($email);
-
-    $message = generateAlertMessage($response);
-}
 
 require_once __DIR__ . '/layouts/head.php';
+
+session_start();
+$message = $_SESSION["message"];
 
 ?>
 
 
 <main>
-<?php include __DIR__ . '/alert.php';?>
+
+
 
 <div class="p-5 mb-4 bg-light rounded-3">
   <div class="container-fluid py-5">
@@ -130,7 +114,7 @@ require_once __DIR__ . '/layouts/head.php';
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cumque quaerat optio omnis commodi esse. Maiores consectetur beatae quasi illo dolorum quia amet tempora. Voluptatum maiores aperiam iure ullam qui?
         </p>
 
-        <form action="" method="get">
+        <form action="server.php" method="get">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" name="email" id="email" placeholder="Type your email">
             <button class="btn btn-primary btn-lg my-3" type="submit">Send</button>
