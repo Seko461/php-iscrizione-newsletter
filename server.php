@@ -23,14 +23,21 @@ if (isset($email)) {
 
     $_SESSION["message"] = $message;
 
- 
+ session_start();
 
-    if ($message['status'] == 'danger') {
-        header('Location: /php/php-iscrizione-newsletter/');
-        return $message;
-    }else{
-        header('Location: /php/php-iscrizione-newsletter/thankyou.php');
-        
+
+    
+    
+    if(isset($_GET['email'])){
+        echo $_GET['email'];
     }
+    
+        if ($message['status'] == 'danger') {
+            header('Location: /php/php-iscrizione-newsletter/oops.php');
+            return $_GET['email'];
+        }else{
+            header('Location: /php/php-iscrizione-newsletter/thankyou.php');
+            
+        }
    
 }

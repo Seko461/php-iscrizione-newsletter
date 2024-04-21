@@ -6,20 +6,23 @@ session_start();
 $message = $_SESSION["message"];
 
 
-
+ 
+    if(isset($_GET['email'])){
+        echo $_GET['email'];
+    }
 ?>
 <main>
 <div class="container ">
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 d-flex  justify-content-center align-items-center" style="margin-top:200px">
-    <div class="col ">
-        <div class="card">
-            <img class="card-img-top"src="https://picsum.photos/400/200" alt="top-img">
-               <div class="card-body text-center">
-                <h4 class="card-title">THANK YOU</h4>
-                <p class="card-text">Successfull subscription</p>
-                <p><a href="/php/php-iscrizione-newsletter/">Click here to Home</a></p>
-        </div>
+    <div class="col text-center">
+        <h1 style="color:red">OOOPS</h1>
+        <h3>Please, try again. Something goes wrong</h3>
+       <form action="server.php" method="get">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" name="email" id="email" placeholder="Type your email" value="<?php if(isset($_GET['email'])) {echo $_GET['email'];}?>">
+            <button class="btn btn-primary btn-lg my-3" type="submit">Send</button>
+        </form>
     </div>
 </div>
 

@@ -8,6 +8,8 @@ require_once __DIR__ . '/layouts/head.php';
 session_start();
 $message = $_SESSION["message"];
 
+
+
 ?>
 
 
@@ -116,7 +118,7 @@ $message = $_SESSION["message"];
 
         <form action="server.php" method="get">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="Type your email">
+            <input type="text" class="form-control" name="email" id="email" placeholder="Type your email" value="<?php if(isset($_GET['email'])) {echo $_GET['email'];}?>">
             <button class="btn btn-primary btn-lg my-3" type="submit">Send</button>
         </form>
     </div>
