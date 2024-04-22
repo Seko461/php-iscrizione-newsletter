@@ -3,6 +3,9 @@ require_once __DIR__ . '/helpers/functions.php';
 //var_dump($_GET);
 //var_dump(isset($_GET['email']));
 
+session_start();
+
+
 
 $email = $_GET['email'];
 
@@ -23,21 +26,17 @@ if (isset($email)) {
 
     $_SESSION["message"] = $message;
 
- session_start();
-
+ 
 
     
     
     if(isset($_GET['email'])){
-        echo $_GET['email'];
-    }
-    
-        if ($message['status'] == 'danger') {
+     if ($message['status'] == 'danger') {
             header('Location: /php/php-iscrizione-newsletter/oops.php');
-            return $_GET['email'];
+            
         }else{
             header('Location: /php/php-iscrizione-newsletter/thankyou.php');
             
         }
-   
+    }
 }
